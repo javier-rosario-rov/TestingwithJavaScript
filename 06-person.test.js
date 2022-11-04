@@ -1,18 +1,26 @@
 const Person = require('./06-person');
 
-test('shoul return down', () => {
-  const personA = new Person('Sam', 50, 1.72);
-  const imc = personA.calcIndMas();
-  expect(imc).toBe('down');
-});
-
-test('should return normal', () => {
-  const personB = new Person('Javier', 66.5, 1.72);
-  const imc = personB.calcIndMas();
-  expect(imc).toBe('normal');
-});
-test('should return overweight', () => {
-  const personC = new Person('Luan', 76, 1.72);
-  const imc = personC.calcIndMas();
-  expect(imc).toBe('overweight');
+describe('Test for 1.72 m tall', () => {
+  let person;
+  beforeEach(() => {
+    person = new Person('Samuel J.', 0, 1.75);
+  });
+  // for each test case we would be creating a new object
+  test('shoul return down', () => {
+    person.weight = 40;
+    // person.height = 1.75;
+    // the test passes when the height is included in the test and left at 0 in the original object
+    const imc = person.calcIndMas();
+    expect(imc).toBe('down');
+  });
+  test('should return normal', () => {
+    person.weight = 66.5;
+    const imc = person.calcIndMas();
+    expect(imc).toBe('normal');
+  });
+  test('should return overweight', () => {
+    person.weight = 76;
+    const imc = person.calcIndMas();
+    expect(imc).toBe('overweight');
+  });
 });
