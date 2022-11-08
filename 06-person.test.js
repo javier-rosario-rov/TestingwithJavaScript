@@ -1,6 +1,6 @@
 const Person = require('./06-person');
 
-describe('Test for 1.72 m tall', () => {
+describe('Test for 1.75 m tall', () => {
   let person;
   beforeEach(() => {
     person = new Person('Samuel J.', 0, 1.75);
